@@ -1,0 +1,205 @@
+:root {
+    --vazir: "Hanken Grotesk", "Bricolage Grotesque", "Vazirmatn", sans-serif;
+    --jetbrains: "JetBrains Mono", "Vazirmatn", ui-monospace, monospace;
+    --bg: #f5f5f7;
+    --bg-fade: rgba(245, 245, 247, 0.4);
+    --bg-link: hsl(0, 0%, 92%);
+    --hover-link: hsl(0, 0%, 87%);
+    --box-link: hsl(0, 0%, 43%);
+    --midline: #e0e0e0;
+    --text: hsl(180, 2%, 12%);
+    --pbt: hsl(180, 2%, 30%);
+    --plt: hsl(240, 3%, 49%);
+    --pis: #ff3b59;
+    --t: 0.2s ease-out;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #111113;
+    --bg-fade: rgba(17, 17, 19, 0.4);
+    --bg-link: hsl(0, 0%, 17%);
+    --hover-link: hsl(0, 0%, 23%);
+    --box-link: hsl(0, 0%, 65%);
+    --midline: #303034;
+    --text: hsl(180, 2%, 92%);
+    --pbt: hsl(180, 2%, 75%);
+    --plt: hsl(240, 5%, 65%);
+    --pis: #ff526b;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body {
+    font-family: "Hanken Grotesk", "Bricolage Grotesque", "JetBrains Mono", "Vazirmatn", sans-serif;
+    /* background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='20' height='20' patternTransform='scale(4) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='%232b2b3100'/><path d='M 10,-2.55e-7 V 20 Z M -1.1677362e-8,10 H 20 Z'  stroke-width='0.5' stroke='%23edededff' fill='none'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>"); */
+    /* cursor: url("https://img.icons8.com/material-rounded/24/blue-pointer.png") 4 4, default; */
+    cursor: none;
+}
+
+a,
+button {
+    /* cursor: url("https://img.icons8.com/material-rounded/24/hand-cursor.png") 4 4, pointer; */
+    cursor: none;
+}
+
+.cursorCircle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--text);
+    pointer-events: none;
+    z-index: 999999;
+    transform: translate(-50%, -50%);
+    transition:
+        width 0.2s ease,
+        height 0.2s ease,
+        background 0.2s ease;
+}
+
+@media (hover: none),
+(pointer: coarse) {
+    .cursorCircle {
+        display: none;
+    }
+}
+
+#preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background: var(--bg);
+    color: var(--text);
+    transition: opacity 0.5s ease,
+        visibility 0.5s ease;
+}
+
+#preloader p {
+    font: 12px var(--jetbrains);
+    letter-spacing: 5px;
+}
+
+.loader {
+    width: 42px;
+    height: 42px;
+    border: 2px solid #ddd;
+    border-top-color: #111;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#preloader.loaded {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.boxBody ul li a span {
+    color: var(--box-link);
+    border-bottom: 1px dashed hsl(0, 0%, 60%);
+}
+
+.boxBody ul li a:hover span {
+    color: var(--box-link);
+    border-bottom: 1px dashed var(--pis);
+}
+
+.postBody>img {
+    max-width: 98%;
+    height: auto;
+}
+
+.profileInfo>h1 {
+    font-family: "Bricolage Grotesque", sans-serif;
+}
+
+.profileImage {
+    background-size: cover;
+    background-position: center;
+    background-image: url("https://cdn.jsdelivr.net/gh/xmirreza/blogProject@main/avatar.webp");
+    image-rendering: smooth;
+    shape-rendering: auto;
+    /* border:1px solid var(--text);
+	outline:1px solid var(--pis);
+	outline-offset:3px; */
+}
+
+nav>ul>li>a {
+    font-size: 12.5px;
+    font-weight: 600;
+    transition: var(--t);
+}
+
+nav>ul>li>a:hover {
+    background-color: var(--hover-link);
+}
+
+.title {
+    font-family: var(--jetbrains);
+}
+
+.postList {
+    direction: rtl;
+}
+
+.postInfo {
+    font-family: var(--jetbrains);
+}
+
+.postBody>p>a {
+    z-index: 1;
+    padding: 1px 7px 2px 7px;
+    border-radius: 100px;
+    font-family: var(--jetbrains);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: 1px;
+    color: color-mix(in srgb, var(--plt) 55%, #111111);
+    border: 1px solid var(--plt);
+    border-color: color-mix(in srgb, var(--plt) 36%, transparent);
+    background: rgba(255, 255, 255, 0.5);
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.6),
+            rgba(255, 255, 255, 0.12)),
+        color-mix(in srgb, var(--plt) 14%, rgba(255, 255, 255, 0.5));
+}
+
+@media (max-width: 1023px) {
+    #pageLayout {
+        --side-width: 200px;
+        --line-width: 2px;
+        --side-gap: 10px;
+
+        transition: transform 0.35s ease;
+        will-change: transform;
+    }
+
+    #pageLayout.side-open {
+        transform: translateX(calc((var(--side-width) + var(--line-width) + var(--side-gap)) / 2));
+    }
+}
